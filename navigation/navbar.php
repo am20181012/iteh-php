@@ -4,12 +4,12 @@
 <head>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/navbarstyle.css">
+    <link rel="stylesheet" href="../style/navbar.css">
     <title>Responsive Navbar</title>
 </head>
 
 <body>
-    <nav class="navbar">
+    <nav class="navbr">
         <div class="logo">money-tracker</div>
         <a href="#" class="toggle-button">
             <span class="bar"></span>
