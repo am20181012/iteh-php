@@ -43,4 +43,17 @@ class Transaction
         $query = "DELETE FROM transaction WHERE id=$this->id";
         return $conn->query($query);
     }
+
+    //READ by id
+    public function getById(mysqli $conn)
+    {
+        $query = "SELECT * FROM transaction WHERE id=$this->id";
+        $myObj = array();
+        if ($mySqlObj = $conn->query($query)) {
+            while ($red = $mySqlObj->fetch_array(1)) {
+                $myObj[] = $red;
+            }
+        }
+        return $myObj;
+    }
 }

@@ -34,7 +34,7 @@ body
     gap: 20px;
 }
 
-input
+input, select, textarea
 {
     width: 100%;
     padding: 10px 20px;
@@ -192,4 +192,39 @@ input
         padding: 10px 15px;
         font-size: 14px;
     }
+}
+
+
+/* CSS za MODAL*/
+.modal-header{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(241, 111, 219);
+    align-items: end;
+}
+
+.modal-header .close-icon{
+    width: 5%;
+    border: none;
+    background-color: rgb(241, 111, 219);
+}
+
+.modal-body{
+    background-image: url("../image/budget.jpg");
+    object-fit: cover;
+}
+
+.container-transakcija-form{
+    /*background-color: red;*/
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.cl{
+    /*background-color: yellow;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
 }

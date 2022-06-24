@@ -57,3 +57,41 @@ function deleteTransaction(id) {
     });
   }
 }
+
+//CITANJE JEDNE TRANSAKCIJE - READ by id
+function editTransaction(id) {
+  console.log("Izmena");
+
+  request = $.ajax({
+    url: "../handler/get.php",
+    type: "post",
+    data: { edit_id: id },
+    dataType: "json",
+  });
+
+  request.done(function (response, textStatus, jqXHR) {
+    console.log("Popunjena");
+    $("#title").val(response[0]["transaction_name"]);
+    console.log(response[0]["transaction_name"]);
+
+    $("#money").val(response[0]["money"].trim());
+    console.log(response[0]["money"].trim());
+
+    $("#date").val(response[0]["date"].trim());
+    console.log(response[0]["date"].trim());
+
+    $("#description").val(response[0]["description"].trim());
+    console.log(response[0]["description"].trim());
+
+    $("#category").val(response[0]["category_id"].trim());
+    console.log(response[0]["category_id"].trim());
+
+    $("#id").val(id);
+
+    console.log(response);
+  });
+
+  request.fail(function (jqXHR, textStatus, errorThrown) {
+    console.error("The following error occurred: " + textStatus, errorThrown);
+  });
+}
