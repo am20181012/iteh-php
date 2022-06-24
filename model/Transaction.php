@@ -56,4 +56,11 @@ class Transaction
         }
         return $myObj;
     }
+
+    //UPDATE
+    public function update($id, mysqli $conn)
+    {
+        $query = "UPDATE transaction SET transaction_name='$this->name', date='$this->date', description='$this->description', money='$this->money', category_id='$this->category_id' WHERE id=$id";
+        return $conn->query($query);
+    }
 }

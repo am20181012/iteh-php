@@ -95,3 +95,40 @@ function editTransaction(id) {
     console.error("The following error occurred: " + textStatus, errorThrown);
   });
 }
+
+//IZMENA transakcije - UPDATE
+$("#editForm").submit(function () {
+  event.preventDefault();
+  console.log("Izmene");
+  const $form = $(this);
+  const $inputs = $form.find("input, select, button, textarea");
+
+  const serializedData = $form.serialize();
+  console.log(serializedData);
+
+  $inputs.prop("disabled", true);
+
+  // kreirati request za UPDATE handler
+  request = $.ajax({
+    url: "../handler/edit.php",
+    type: "post",
+    data: serializedData,
+  });
+
+  request.done(function (response, textStatus, jqXHR) {
+    if (response == "Success") {
+      alert("Transakcija uspesno izmenjena");
+      console.log("Transakcija je izmenjena");
+      location.reload(false);
+    } else {
+      alert("Transakcija nije izmenjena");
+      console.log("Transakcija nije izmenjena " + response);
+    }
+    console.log(response);
+  });
+
+  request.fail(function (jqXHR, textStatus, errorThrown) {
+    console.log("Gresssskaa");
+    console.error("The following error occurred: " + textStatus, errorThrown);
+  });
+});
