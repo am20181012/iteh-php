@@ -63,4 +63,11 @@ class Transaction
         $query = "UPDATE transaction SET transaction_name='$this->name', date='$this->date', description='$this->description', money='$this->money', category_id='$this->category_id' WHERE id=$id";
         return $conn->query($query);
     }
+
+    //funkcija za pretragu na osnovu naziva transakcije ili kategorije
+    public static function search($input, $user_id, mysqli $conn)
+    {
+        $query = "SELECT t.id AS t_id, t.transaction_name, t.date, t.description, t.money, c.id AS c_id, c.category_name FROM transaction t INNER JOIN category c ON (t.category_id=c.id) WHERE (t.transaction_name LIKE '$input%' OR c.category_name LIKE '$input%') AND t.user_id=$user_id";
+        return mysqli_query($conn, $query);
+    }
 }

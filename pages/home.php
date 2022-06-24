@@ -36,7 +36,7 @@ if (!$data) {
             <div class="search">
                 <input id="searchbar" class="searchbar" type="text" name="searchbar" placeholder="Pretraga..." />
             </div>
-            <div class="container">
+            <div id="container" class="container">
                 <?php
                 while ($row = $data->fetch_array()) :
                 ?>
@@ -61,6 +61,7 @@ if (!$data) {
             }
             ?>
             </div>
+            <div id="searchresult" class="search-result"></div>
         </div>
 
         <!-- Modal -->
@@ -117,6 +118,30 @@ if (!$data) {
 
         <!--Skripte za slanje ajax zahteva za izmenu i brisanje transakcije-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!--js skripta za pretragu + ajax (u sustini mogla sam da stavim i u main.js)-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#searchbar").keyup(function() {
+                    var input = $(this).val();
+                    if (input != '' || input != null) {
+                        $.ajax({
+                            url: "../handler/search.php",
+                            method: "POST",
+                            data: {
+                                input: input
+                            },
+                            success: function(data) {
+                                $("#container").css("display", "none");
+                                $("#searchresult").html(data);
+                            }
+                        });
+                    } else {
+                        $("#searchresult").css("display", "none");
+                    }
+                });
+            });
+        </script>
         <!--Skripta, tj. link ka skripti za koriscenje modala i drugo-->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="../js/main.js"></script>
