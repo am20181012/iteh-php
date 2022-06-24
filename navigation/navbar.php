@@ -21,7 +21,7 @@
                 <li><a href="../pages/home.php">Pocetna</a></li>
                 <li><a href="../pages/transaction.php">Transakcije</a></li>
                 <li><a href="../pages/categories.php">Kategorije</a></li>
-                <li><a href="#">Odjavi se</a></li>
+                <li><a href="../navigation/logout.php">Odjavi se</a></li>
             </ul>
         </div>
     </nav>
