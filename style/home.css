@@ -48,7 +48,7 @@ input
     border-radius: 30px;
 }
 
-.card
+#card
 {
     background: rgba(255, 255, 255, 0.892);
     border-radius: 10px;
@@ -59,14 +59,14 @@ input
     width: 100%;
 }
 
-.card h6
+#card h6
 {
     opacity: 0.6;
     letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-.card h2
+#card h2
 {
     letter-spacing: 1px;
     margin: 10px 0;
@@ -156,7 +156,7 @@ input
         max-width: 100%;
         padding: 0;
     }
-    .card
+    #card
     {
         flex-direction: column;
         width: 85%;

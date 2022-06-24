@@ -29,4 +29,11 @@ class Transaction
         $query = "INSERT INTO transaction(transaction_name, date, description, money, category_id, user_id) VALUES ('$tran->name', '$tran->date', '$tran->description', '$tran->money', '$tran->category_id', '$tran->user_id')";
         return $conn->query($query);
     }
+
+    //READ ALL
+    public static function getAll(mysqli $conn, $user_id)
+    {
+        $query = "SELECT t.id AS t_id, t.transaction_name, t.date, t.description, t.money, c.id AS c_id, c.category_name FROM transaction t INNER JOIN category c ON (t.category_id=c.id) WHERE user_id = '$user_id'";
+        return $conn->query($query);
+    }
 }
