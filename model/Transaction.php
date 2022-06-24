@@ -70,4 +70,16 @@ class Transaction
         $query = "SELECT t.id AS t_id, t.transaction_name, t.date, t.description, t.money, c.id AS c_id, c.category_name FROM transaction t INNER JOIN category c ON (t.category_id=c.id) WHERE (t.transaction_name LIKE '$input%' OR c.category_name LIKE '$input%') AND t.user_id=$user_id";
         return mysqli_query($conn, $query);
     }
+
+    //funkcija za sortiranje transakcija u rastucem ili opadajucem redosledu na osnovu datuma ili iznosa novca, a za odredjenu kategoriju
+    public static function sort($category, $sortBy, $order, $user_id, mysqli $conn)
+    {
+        $query = "";
+        if ($category != 7) {
+            $query = "SELECT t.id AS t_id, t.transaction_name, t.date, t.description, t.money, c.id AS c_id, c.category_name FROM transaction t INNER JOIN category c ON (t.category_id=c.id) WHERE category_id = $category AND t.user_id=$user_id ORDER BY $sortBy $order";
+        } else {
+            $query = "SELECT t.id AS t_id, t.transaction_name, t.date, t.description, t.money, c.id AS c_id, c.category_name FROM transaction t INNER JOIN category c ON (t.category_id=c.id) WHERE t.user_id=$user_id ORDER BY $sortBy $order";
+        }
+        return mysqli_query($conn, $query);
+    }
 }
