@@ -30,3 +30,30 @@ $("#addTransaction").submit(function () {
     console.error("Sledeca greska se desila> " + textStatus, errorThrown);
   });
 });
+
+//BRISANJE transakcije - DELETE
+function deleteTransaction(id) {
+  console.log("Brisanje");
+
+  if (confirm("Da li ste sigurni da zelite da obrisete ovu transakciju?")) {
+    req = $.ajax({
+      url: "../handler/delete.php",
+      type: "post",
+      data: { deleted_id: id },
+    });
+
+    req.done(function (res, textStatus, jqXHR) {
+      if (res == "Success") {
+        $("#card" + id).hide("slow");
+        $("#main-card" + id).hide("slow");
+        console.log($("#card" + id));
+        //alert("Obrisana transakcija.");
+        console.log("obrisana");
+      } else {
+        console.log("transakcija nije obrisana " + res);
+        alert("Transakcija nije obrisana!");
+      }
+      console.log(res);
+    });
+  }
+}

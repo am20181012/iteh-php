@@ -21,7 +21,7 @@ if (!$data) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home</title>
-        <link rel="stylesheet" href="../style/home.css">
+        <link rel="stylesheet" href="../style/homestyle.css">
     </head>
 
     <body>
@@ -37,7 +37,7 @@ if (!$data) {
                 <?php
                 while ($row = $data->fetch_array()) :
                 ?>
-                    <div id="card" class="card<?php echo $row['t_id'] ?>">
+                    <div id="card<?php echo $row['t_id'] ?>" class="card">
                         <div class="preview">
                             <h6><?php echo $row['category_name'] ?></h6>
                             <h2><?php if ($row['c_id'] == 1)  echo "+" . $row['money'] . " RSD";
@@ -49,7 +49,7 @@ if (!$data) {
                             <h2><?php echo $row['transaction_name'] ?></h2>
                             <p class="p-trunc"><?php echo $row['description'] ?></p>
                             <button id="btn-edit" class="btn">Izmeni</button>
-                            <button id="btn-delete" class="btn">Izbrisi</button>
+                            <button id="btn-delete" class="btn" onclick="deleteTransaction(<?php echo $row['t_id'] ?>)">Izbrisi</button>
 
                         </div>
                     </div>
@@ -60,6 +60,10 @@ if (!$data) {
 
             </div>
         </div>
+
+        <!--Skripte za slanje ajax zahteva za izmenu i brisanje transakcije-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="../js/main.js"></script>
 
     </body>
 

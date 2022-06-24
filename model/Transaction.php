@@ -36,4 +36,11 @@ class Transaction
         $query = "SELECT t.id AS t_id, t.transaction_name, t.date, t.description, t.money, c.id AS c_id, c.category_name FROM transaction t INNER JOIN category c ON (t.category_id=c.id) WHERE user_id = '$user_id'";
         return $conn->query($query);
     }
+
+    //DELETE by id
+    public function deleteById(mysqli $conn)
+    {
+        $query = "DELETE FROM transaction WHERE id=$this->id";
+        return $conn->query($query);
+    }
 }
