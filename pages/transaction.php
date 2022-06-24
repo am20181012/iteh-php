@@ -19,22 +19,22 @@
         <div class="contentBox">
             <div class="formBox">
                 <h2>Dodaj transakciju</h2>
-                <form>
+                <form method="POST" action="#" id="addTransaction">
                     <div class="inputBox">
                         <span>Naziv</span>
-                        <input type="text" name="" />
+                        <input type="text" name="title" />
                     </div>
                     <div class="inputBox">
                         <span>Iznos</span>
-                        <input type="text" name="" />
+                        <input type="text" name="money" />
                     </div>
                     <div class="inputBox">
                         <span>Datum</span>
-                        <input type="date" name="" />
+                        <input type="date" name="date" />
                     </div>
                     <div class="inputBox">
                         <span>Opis</span>
-                        <textarea type="text" name=""></textarea>
+                        <textarea type="text" name="description"></textarea>
                     </div>
                     <div class="inputBox">
                         <span>Kategorija</span>
@@ -54,6 +54,11 @@
             </div>
         </div>
     </section>
+
+    <!--Skripte za slanje ajax zahteva i dodavanje transakcije u bazu-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/main.js"></script>
+
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 $host = "localhost";
-$db = "money-tracker";
+$db = "money-tracker-db";
 $user = "root";
 $pass = "";
 
