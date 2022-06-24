@@ -88,7 +88,7 @@ section .contentBox .formBox .inputBox span
     letter-spacing: 1px;
 }
 
-section .contentBox .formBox .inputBox input 
+section .contentBox .formBox .inputBox input, select, textarea
 {
     width: 100%;
     padding: 10px 20px;
